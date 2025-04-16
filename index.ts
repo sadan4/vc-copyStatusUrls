@@ -4,10 +4,11 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
+import { copyToClipboard } from "@utils/clipboard";
 import { Devs } from "@utils/constants";
 import definePlugin from "@utils/types";
 import { findByCodeLazy } from "@webpack";
-import { Clipboard, Toasts } from "@webpack/common";
+import { Toasts } from "@webpack/common";
 import { User } from "discord-types/general";
 
 interface MakeContextMenuProps {
@@ -41,7 +42,7 @@ export default definePlugin({
                 if (!button_urls[index]) {
                     throw new Error("button_urls does not contain index");
                 }
-                Clipboard.copy(button_urls[index]);
+                copyToClipboard(button_urls[index]);
                 Toasts.show({
                     id: Toasts.genId(),
                     message: "Copied URL",
